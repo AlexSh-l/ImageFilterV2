@@ -24,6 +24,13 @@ export const MainPage = () =>{
         formFileData.append("file", file)
         setFormData({...formData, "file":formFileData})
     }
+    const logoutHandler = async () => {
+        try {
+            contxt.logout(contxt.token, contxt.userId)
+        } catch (e) {
+
+        }
+    }
     return (
         <div className="bodyMain">
             <header>
@@ -33,7 +40,10 @@ export const MainPage = () =>{
             <div className="bodyContent">
                 Please select your image:
                 <input type="file" name="file" accept="image/*" onChange={(e) => changeHandler(e.target.files)}></input>
+                <div>
                     <button onClick={uploadHandler}>Enter</button>
+                    <button onClick={logoutHandler}>Logout</button>
+                </div>
             </div>
             <footer>
                 @Copyright 2021. All rights reserved.
